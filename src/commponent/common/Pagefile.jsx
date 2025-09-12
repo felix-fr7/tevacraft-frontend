@@ -140,6 +140,7 @@ const Pagefile = () => {
         <input type="file" accept=".pdf,.doc,.docx" {...register("resume", { required: true })} />
 
         {/* Experience */}
+        <label>Experience (in years)</label>
         <input type="number" placeholder="Experience in Years" {...register("experience", { required: true })} />
 
         {/* Submit */}
