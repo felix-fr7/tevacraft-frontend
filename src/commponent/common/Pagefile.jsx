@@ -57,7 +57,7 @@ const Pagefile = () => {
 
   return (
     <div className="mainform">
-      <h2 className="powerheading" style={{ color: "#B96CFD" }}>Register</h2>
+      <h2 className="powerheading" style={{ color: "#B96CFD" }}>Enrolment form</h2>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
 
         {/* Email */}
@@ -127,7 +127,7 @@ const Pagefile = () => {
         ))}
 
         {/* Industry */}
-        <input placeholder="Industry" {...register("industry", { required: true })} />
+        {/* <input placeholder="Industry" {...register("industry", { required: true })} /> */}
 
         {/* Bank Info */}
         <input placeholder="Beneficiary Name" {...register("beneficiary", { required: true })} />
