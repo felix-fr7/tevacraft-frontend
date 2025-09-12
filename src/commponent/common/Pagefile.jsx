@@ -36,7 +36,7 @@ const Pagefile = () => {
     }
 
     const response = await axios.post(
-      "https://tevabackend.onrender.com/register/postdetails",
+      "https://tevacraft-back.onrender.com/register/postdetails",
       formData,
       { headers: { "Content-Type": "multipart/form-data" } }
     );
