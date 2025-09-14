@@ -35,12 +35,11 @@ const Pagefile = () => {
       formData.append("resume", data.resume[0]);
     }
 
-   const response = await axios.post(
-  "https://tevabackend.onrender.com/register/postdetails",
-  formData,
-  { headers: { "Content-Type": "multipart/form-data" } }
-);
-
+    const response = await axios.post(
+      "https://tevacraft-back.onrender.com/register/postdetails",
+      formData,
+      { headers: { "Content-Type": "multipart/form-data" } }
+    );
 
     if (response.status === 200) {
       alert("✅ Registered Successfully");
@@ -48,6 +47,8 @@ const Pagefile = () => {
   } catch (error) {
     if (error.response && error.response.status === 400) {
       alert("❌ This email is already registered!");
+    } else {
+      alert("❌ Something went wrong. Try again!");
     }
     console.error(error);
   }
