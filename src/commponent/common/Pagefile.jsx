@@ -138,10 +138,12 @@ const Pagefile = () => {
         {/* Resume Upload */}
         <label>Upload Resume</label>
         <input type="file" accept=".pdf,.doc,.docx" {...register("resume", { required: true })} />
+        {errors.resume && <span className="error">This field is required</span>}
 
         {/* Experience */}
         <label>Experience (in years)</label>
         <input type="number" placeholder="Experience in Years" {...register("experience", { required: true })} />
+        {errors.experience && <span className="error">This field is required</span>}
 
         {/* Submit */}
         <button type="submit">Submit</button>
