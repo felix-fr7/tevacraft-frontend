@@ -577,6 +577,24 @@ img.icone3{
     background-color: var(--black-color);
     border: 1px solid var(--primary-color); 
 }
+/* footer */
+.footerimg{
+    width: 100%;
+    height: 400px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgba(239, 45, 216, 0.7); /* Updated box-shadow */
+    animation: glow 2s infinite alternate; /* Added animation */
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px 5px rgba(252, 3, 194, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 20px 10px rgb(240, 163, 235);
+    }
+}
 .footertext{
     align-items: center;
     text-align: center;

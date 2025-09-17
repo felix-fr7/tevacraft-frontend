@@ -6,6 +6,7 @@ export const entertainment=`${process.env.PUBLIC_URL}/assets/entertainment.png`
 export const media=`${process.env.PUBLIC_URL}/assets/media.png`
 // why choose
 export const whychoose = `${process.env.PUBLIC_URL}/assets/robo.png`
+export const footer = `${process.env.PUBLIC_URL}/assets/footer.png`
 
 
 
@@ -58,6 +59,7 @@ export const landingdata ={
     subitem4:"E-commerce",
     subitem5:"Software Localization",
     footersubhead3:"Contact",
+    footer:`${process.env.PUBLIC_URL}/assets/footer.png`,
     email:"biz.operations@tevacraft.in",
     phone1:"+91 9010805455",
     phone2:"+91 9441540627",

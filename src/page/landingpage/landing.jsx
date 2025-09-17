@@ -81,18 +81,7 @@ const Landing = () => {
   </div>
   <div className='contact'>
   <h4>{landingdata.footersubhead3}</h4>
-    <div className='subcontact'>
-         <HiOutlineMail className='icon'/>
-       <p className='mail'>{landingdata.email}</p>
-    </div>
-    <div className='subcontact'>
-       <FaPhoneVolume className='icon'/>
-       <p>{landingdata.phone1}</p>
-    </div>
-    <div className='subcontact'>
-        <FaPhoneVolume className='icon'/>
-    <p>{landingdata.phone2}</p>
-    </div>
+    <img className='footerimg' src= {landingdata.footer}></img>
   </div>
   <div className='industriescontant'>
     <h4>{landingdata.footersubhead2}</h4>

@@ -20,46 +20,45 @@ const expertise = ["Translation", "Proofreading", "Editing", "Localization"];
 const Pagefile = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
- const onSubmit = async (data) => {
-  try {
-    const formData = new FormData();
-    Object.keys(data).forEach((key) => {
-      if (Array.isArray(data[key])) {
-        data[key].forEach((val) => formData.append(key, val));
-      } else {
-        formData.append(key, data[key]);
+  const onSubmit = async (data) => {
+    try {
+      const formData = new FormData();
+      Object.keys(data).forEach((key) => {
+        if (Array.isArray(data[key])) {
+          data[key].forEach((val) => formData.append(key, val));
+        } else {
+          formData.append(key, data[key]);
+        }
+      });
+
+      if (data.resume && data.resume[0]) {
+        formData.append("resume", data.resume[0]);
       }
-    });
 
-    if (data.resume && data.resume[0]) {
-      formData.append("resume", data.resume[0]);
+      const response = await axios.post(
+        "https://tevacraft-back.onrender.com/register/postdetails",
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+
+      if (response.data.message === "User registered successfully!") {
+        alert("✅ Registered Successfully");
+      }
+
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        alert("❌ This email is already registered!");
+      } else {
+        alert("❌ Something went wrong. Try again!");
+      }
+      console.error(error);
     }
-
-    const response = await axios.post(
-      "https://tevacraft-back.onrender.com/register/postdetails",
-      formData,
-      { headers: { "Content-Type": "multipart/form-data" } }
-    );
-
-    if (response.status === 200) {
-      alert("✅ Registered Successfully");
-    }
-  } catch (error) {
-    if (error.response && error.response.status === 400) {
-      alert("❌ This email is already registered!");
-    } else {
-      alert("❌ Something went wrong. Try again!");
-    }
-    console.error(error);
-  }
-};
-
+  };
 
   return (
     <div className="mainform">
       <h2 className="powerheading" style={{ color: "#B96CFD" }}>Enrolment form</h2>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
-
         {/* Email */}
         <input placeholder="Enter your email" type="email" {...register("email", { required: true })} />
 
@@ -90,25 +89,25 @@ const Pagefile = () => {
           <option value="PhD">PhD</option>
         </select>
 
-       {/* Source Language */}
-<label>Source Language(s)</label>
-<div className="checkbox-group scrollbar">
-  {languages.map((lang) => (
-    <label key={lang} className="checkbox-item">
-      <input type="checkbox" value={lang} {...register("sourcelanguage")} /> {lang}
-    </label>
-  ))}
-</div>
+        {/* Source Language */}
+        <label>Source Language(s)</label>
+        <div className="checkbox-group scrollbar">
+          {languages.map((lang) => (
+            <label key={lang} className="checkbox-item">
+              <input type="checkbox" value={lang} {...register("sourcelanguage")} /> {lang}
+            </label>
+          ))}
+        </div>
 
-       {/* Target Language */}
-<label>Target Language(s)</label>
-<div className="checkbox-group scrollbar">
-  {languages.map((lang) => (
-    <label key={lang} className="checkbox-item">
-      <input type="checkbox" value={lang} {...register("targetlanguage")} /> {lang}
-    </label>
-  ))}
-</div>
+        {/* Target Language */}
+        <label>Target Language(s)</label>
+        <div className="checkbox-group scrollbar">
+          {languages.map((lang) => (
+            <label key={lang} className="checkbox-item">
+              <input type="checkbox" value={lang} {...register("targetlanguage")} /> {lang}
+            </label>
+          ))}
+        </div>
 
         {/* Domain */}
         <label>Domain</label>
@@ -125,9 +124,6 @@ const Pagefile = () => {
             <input type="checkbox" value={e} {...register("expertise")} /> {e}
           </label>
         ))}
-
-        {/* Industry */}
-        {/* <input placeholder="Industry" {...register("industry", { required: true })} /> */}
 
         {/* Bank Info */}
         <input placeholder="Beneficiary Name" {...register("beneficiary", { required: true })} />
